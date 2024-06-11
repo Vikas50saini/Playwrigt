@@ -19,8 +19,13 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: List files in current directory
+      run: ls -R
+    - name: List files in playwright-report directory
+      run: ls -R playwright-report
     - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      # Remove the condition to see if the step runs without it
+      # if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/
