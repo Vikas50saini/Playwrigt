@@ -11,9 +11,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests', // Set the root directory for the tests
-  testMatch: ["tests/*.test.ts","featureTests/*.test.ts"], // Simplified pattern to match all .test.ts files
+  testMatch: ["featureTests/*.test.ts"], // Simplified pattern to match all .test.ts files
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -22,7 +22,7 @@ export default defineConfig({
 
   retries: 1,
 
-  workers: 10,
+  // workers: 10,
   // workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['dot'], ['json', { outputFolder: "jsonReports/report.json" }], ['html', { outputFolder: "htmlReports/report.html", open: 'always' }]],
@@ -30,7 +30,7 @@ export default defineConfig({
   timeout: 10000,
   use: {
     baseURL: "https://ecommerce-playground.lambdatest.io",
-    headless: false,
+    headless: true,
     // deviceScaleFactor:2,
     screenshot: 'on',
     video: 'retain-on-failure',
