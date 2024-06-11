@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests', // Set the root directory for the tests
+  testDir: './framework/tests', // Set the root directory for the tests
   testMatch: ["featureTests/*.test.ts"], // Simplified pattern to match all .test.ts files
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -27,7 +27,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['dot'], ['json', { outputFolder: "jsonReports/report.json" }], ['html', { outputFolder: "htmlReports/report.html", open: 'always' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 10000,
+  timeout: 50000,
   use: {
     baseURL: "https://ecommerce-playground.lambdatest.io",
     headless: true,
