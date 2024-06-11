@@ -21,11 +21,16 @@ jobs:
       run: npx playwright test
     - name: List files in current directory
       run: ls -R
-    - name: List files in playwright-report directory
+    - name: Check Playwright test logs
+      run: cat playwright-report/*.log
+      continue-on-error: true
+    - name: Create dummy directory for testing
+      run: |
+        mkdir -p playwright-report
+        echo "dummy content" > playwright-report/dummy.txt
+    - name: List files in dummy directory
       run: ls -R playwright-report
     - uses: actions/upload-artifact@v4
-      # Remove the condition to see if the step runs without it
-      # if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/

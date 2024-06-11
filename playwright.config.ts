@@ -25,7 +25,7 @@ export default defineConfig({
   // workers: 10,
   // workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['dot'], ['json', { outputFolder: "jsonReports/report.json" }], ['html', { outputFolder: "htmlReports/report.html", open: 'always' }]],
+  reporter: [['dot'], ['json', { outputFolder: "jsonReports/report.json" }], ['html', { outputFolder: 'playwright-report', open:"never" }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 50000,
   use: {
